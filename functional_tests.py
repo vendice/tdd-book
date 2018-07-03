@@ -17,7 +17,7 @@ class NewVisitorTest (unittest.TestCase):
 
         # er schaut sich den Titel der Seite an, und sieht To-Do                                                 
         self.assertIn('To-Do', self.browser.title)
-        self.fail('Finish the test!"')
+        self.fail('Finish the test!')
 
         # Er kann ein to-do item eingeben
 
