@@ -29,13 +29,14 @@ class NewVisitorTest (unittest.TestCase):
         # Er tippt einkaufen ein
         inputbox.send_keys('einkaufen')
 
-        # Als er enter ein gibt wird die seite geupdated und er kann den ersten Punkt einkaufen sehen
+        # Als er enter ein gibt wird die seite geupdated und er kann den ersten Punkt einkaufen sehen, die inputbox steht immernoch da und er kann weitere Punkte eingeben
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
 
         table = self.browser.find_element_by_id('id_list_table')
         rows =  table.find_elements_by_tag_name('tr')
-        self.assertTrue(any (row.text == '1: einkaufen' for row in rows), "New to-do item did not appear in table")
+        self.assertIn('1: einkaufen' , [row.text for row in rows])
+        self.assertIn('2: essen' , [row.text for row in rows])
 
         
         # Die Textbox steht noch immer da, er kann einen zweiten Punkt eingeben
